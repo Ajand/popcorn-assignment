@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
-import googleBooks from "google-books-search";
+import query from "../lib/query";
 
 import { Book } from "../lib/types";
 import BookInput from "../components/BookInput";
@@ -14,17 +14,14 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     if (searchString) {
-      googleBooks.search(
-        searchString,
-        { limit: 5 },
-        (error: Error, results: Book[]) => {
-          if (error) {
-            console.log(error);
-          } else {
-            setBooks(results);
-          }
-        }
-      );
+      query(searchString)
+        .then((results: Book[]) => {
+          console.log(results);
+          setBooks(results);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   }, [searchString]);
 
