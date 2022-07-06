@@ -1,7 +1,8 @@
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Head from "next/head";
 import { Box } from "@chakra-ui/react";
+import googleBooks from "google-books-search";
 
 import { Book } from "../lib/types";
 import BookInput from "../components/BookInput";
@@ -42,6 +43,22 @@ const books: Book[] = [
 
 const Home: NextPage = () => {
   const [searchString, setSearchStr] = useState("");
+
+  useEffect(() => {
+    if (searchString) {
+      googleBooks.search(
+        searchString,
+        { limit: 5 },
+        (error: Error, results: Book[]) => {
+          if (error) {
+            console.log(error);
+          } else {
+            console.log(results);
+          }
+        }
+      );
+    }
+  }, [searchString]);
 
   return (
     <div>
