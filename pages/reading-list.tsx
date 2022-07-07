@@ -1,6 +1,6 @@
 import { FC, useContext } from "react";
 import { Box, Flex, VStack } from "@chakra-ui/react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Pages.module.css";
 import { ReadingListContext } from "../lib/contexts/ReadingList";
 import BookItem from "../components/BookItem";
 import ReadingListHeader from "../components/ReadingListHeader";
@@ -14,8 +14,8 @@ const ReadingList: FC = () => {
       <Flex align="center" justify="center" height="100%">
         <Box maxWidth="600px" width="90%" display="inline-block">
           <ReadingListHeader />
-          <Box className={styles.searchContainer} borderRadius="lg">
-            <Box className={styles.resultContainer}>
+          <Box className={styles.container} borderRadius="lg">
+            <Box className={styles.list}>
               <VStack spacing={0} maxH="calc(95vh - 150px)" overflow="auto">
                 {readingListBooks.map((book) => (
                   <BookItem book={book} key={book.id} />

@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import { Box, Flex, VStack } from "@chakra-ui/react";
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Pages.module.css";
 
 import { useBooks } from "../lib/hooks";
 
@@ -18,11 +18,11 @@ const Home: NextPage = () => {
         <Flex align="center" justify="center" height="100%">
           <Box maxWidth="600px" width="90%" display="inline-block">
             <SearchHeader />
-            <Box className={styles.searchContainer} borderRadius="lg">
+            <Box className={styles.container} borderRadius="lg">
               <BookInput value={searchString} setValue={setSearchStr} />
               <Box
                 className={
-                  books.length || loading ? styles.resultContainer : ""
+                  books.length || loading ? styles.list : ""
                 }
               >
                 <VStack spacing={0} maxH="calc(95vh - 150px)" overflow="auto">

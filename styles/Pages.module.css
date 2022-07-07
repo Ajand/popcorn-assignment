@@ -8,12 +8,12 @@
 }
 
 
-.searchContainer {
+.container {
   background: rgba(75, 43, 81, 0.5);
   transition: 0.2s;
 }
 
-.resultContainer {
+.list {
   padding: 16px 0px;
   transition: 0.2s;
 }
