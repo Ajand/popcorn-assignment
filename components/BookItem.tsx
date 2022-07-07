@@ -1,9 +1,20 @@
-import { FC, Dispatch, SetStateAction } from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { FC, useContext } from "react";
+import { Box, Text, Button } from "@chakra-ui/react";
 import styles from "../styles/Book.module.css";
 import { Book } from "../lib/types";
 
+import { ReadingListContext } from "../lib/contexts/ReadingList";
+
 const BookInput: FC<{ book: Book }> = ({ book }) => {
+  const {
+    readingList,
+    addToReadingList,
+    deleteFromReadingList,
+    isInReadingList,
+  } = useContext(ReadingListContext);
+
+  console.log(readingList);
+
   return (
     <Box
       width="calc(100% - 2em)"
@@ -20,6 +31,26 @@ const BookInput: FC<{ book: Book }> = ({ book }) => {
       <Text color="gray.300" fontSize="md">
         {book.publisher}
       </Text>
+
+      {isInReadingList(String(book.id)) ? (
+        <Button
+          onClick={() => deleteFromReadingList(String(book.id))}
+          size="xs"
+          colorScheme="orange"
+          mt="2"
+        >
+          Remove From Reading List
+        </Button>
+      ) : (
+        <Button
+          onClick={() => addToReadingList(book)}
+          size="xs"
+          colorScheme="purple"
+          mt="2"
+        >
+          Add To Reading List
+        </Button>
+      )}
     </Box>
   );
 };

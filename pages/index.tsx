@@ -9,6 +9,9 @@ import BookInput from "../components/BookInput";
 import BookItem from "../components/BookItem";
 import BookItemPlaceholder from "../components/BookItemPlaceholder";
 
+import { useState } from "react";
+import { Book } from "../lib/types";
+
 const Home: NextPage = () => {
   const { searchString, setSearchStr, books, loading } = useBooks();
 

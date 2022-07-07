@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { Box } from "@chakra-ui/react";
 import PlaceholderLoading from "react-placeholder-loading";
 import styles from "../styles/Book.module.css";
@@ -19,10 +19,9 @@ const BookItemPlaceholder: FC = () => {
           colorEnd="#f14bd8"
           colorStart="#4b2b51"
         />
-        
       </Box>
       <Box mt="4">
-      <PlaceholderLoading
+        <PlaceholderLoading
           shape="rect"
           width={"60%"}
           height={16}
@@ -31,7 +30,7 @@ const BookItemPlaceholder: FC = () => {
         />
       </Box>
       <Box mt="4">
-      <PlaceholderLoading
+        <PlaceholderLoading
           shape="rect"
           width={"50%"}
           height={12}
