@@ -1,4 +1,4 @@
-import { FC, useContext } from "react";
+import { FC } from "react";
 import { Box } from "@chakra-ui/react";
 import PlaceholderLoading from "react-placeholder-loading";
 import styles from "../styles/Book.module.css";

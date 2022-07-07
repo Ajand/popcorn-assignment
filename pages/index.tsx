@@ -8,9 +8,7 @@ import { useBooks } from "../lib/hooks";
 import BookInput from "../components/BookInput";
 import BookItem from "../components/BookItem";
 import BookItemPlaceholder from "../components/BookItemPlaceholder";
-
-import { useState } from "react";
-import { Book } from "../lib/types";
+import ReadingListHeader from "../components/ReadingListHeader";
 
 const Home: NextPage = () => {
   const { searchString, setSearchStr, books, loading } = useBooks();
@@ -27,26 +25,27 @@ const Home: NextPage = () => {
       </Head>
       <Box className={styles.main} width="100vw" height="100vh">
         <Flex align="center" justify="center" height="100%">
-          <Box
-            className={styles.searchContainer}
-            maxWidth="600px"
-            width="90%"
-            display="inline-block"
-            borderRadius="lg"
-          >
-            <BookInput value={searchString} setValue={setSearchStr} />
-            <Box
-              className={books.length || loading ? styles.resultContainer : ""}
-            >
-              <VStack spacing={0}>
-                {books.length
-                  ? books.map((book) => <BookItem book={book} key={book.id} />)
-                  : loading
-                  ? [1, 2, 3, 4, 5].map((item) => (
-                      <BookItemPlaceholder key={item} />
-                    ))
-                  : null}
-              </VStack>
+          <Box maxWidth="600px" width="90%" display="inline-block">
+            <ReadingListHeader />
+            <Box className={styles.searchContainer} borderRadius="lg">
+              <BookInput value={searchString} setValue={setSearchStr} />
+              <Box
+                className={
+                  books.length || loading ? styles.resultContainer : ""
+                }
+              >
+                <VStack spacing={0}>
+                  {books.length
+                    ? books.map((book) => (
+                        <BookItem book={book} key={book.id} />
+                      ))
+                    : loading
+                    ? [1, 2, 3, 4, 5].map((item) => (
+                        <BookItemPlaceholder key={item} />
+                      ))
+                    : null}
+                </VStack>
+              </Box>
             </Box>
           </Box>
         </Flex>
