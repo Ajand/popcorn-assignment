@@ -7,18 +7,17 @@ import { useBooks } from "../lib/hooks";
 import BookInput from "../components/BookInput";
 import BookItem from "../components/BookItem";
 import BookItemPlaceholder from "../components/BookItemPlaceholder";
-import ReadingListHeader from "../components/ReadingListHeader";
+import SearchHeader from "../components/SearchHeader";
 
 const Home: NextPage = () => {
   const { searchString, setSearchStr, books, loading } = useBooks();
 
   return (
     <div>
-
       <Box className={styles.main} width="100vw" height="100vh">
         <Flex align="center" justify="center" height="100%">
           <Box maxWidth="600px" width="90%" display="inline-block">
-            <ReadingListHeader />
+            <SearchHeader />
             <Box className={styles.searchContainer} borderRadius="lg">
               <BookInput value={searchString} setValue={setSearchStr} />
               <Box

@@ -14,11 +14,11 @@ const ReadingListHeader: FC = () => {
         onClick={(e) => {
           {
             e.preventDefault();
-            router.push("/");
+            router.push("/reading-list");
           }
         }}
       >
-        Back To Search
+        Reading List ({readingList.size})
       </Button>
     </Box>
   );
