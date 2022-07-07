@@ -1,5 +1,6 @@
 import { createContext, useState, ReactNode, FC, useEffect } from "react";
 import { Book } from "../types";
+import { mapToString, stringToMap } from "../utils";
 
 interface ReadingList {
   readingList: Map<string, Book>;
@@ -14,14 +15,6 @@ export const ReadingListContext = createContext<ReadingList>({
   deleteFromReadingList: (bookId) => {},
   isInReadingList: (bookId) => false,
 });
-
-const mapToString = (mapping: Map<any, any>) => {
-  return JSON.stringify(Array.from(mapping));
-};
-
-const stringToMap = (target: string): Map<string, Book> => {
-  return new Map(JSON.parse(target));
-};
 
 export const ReadingListProvider: FC<{ children: ReactNode }> = ({
   children,
