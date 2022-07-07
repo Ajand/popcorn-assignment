@@ -19,10 +19,12 @@ export default (searchString: string): Promise<Book[]> => {
         `${baseUrl}?q=${searchString}&startIndex=${startIndex}&maxResults=${maxResults}&printType=${printType}&orderBy=${orderBy}`
       )
       .then((r) => {
-        return r.data.items.map((resultItem: ResultItem) => ({
-          ...resultItem.volumeInfo,
-          id: resultItem.id,
-        }));
+        return r.data.items
+          ? r.data.items.map((resultItem: ResultItem) => ({
+              ...resultItem.volumeInfo,
+              id: resultItem.id,
+            }))
+          : [];
       })
       .then((items) => resolve(items))
       .catch((err) => {

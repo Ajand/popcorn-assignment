@@ -1,33 +1,15 @@
 import type { NextPage } from "next";
-import { useState, useEffect } from "react";
 import Head from "next/head";
 import { Box, Flex, VStack } from "@chakra-ui/react";
 import styles from "../styles/Home.module.css";
-import query from "../lib/query";
 
-import { Book } from "../lib/types";
+import { useBooks } from "../lib/hooks";
+
 import BookInput from "../components/BookInput";
 import BookItem from "../components/BookItem";
 
 const Home: NextPage = () => {
-  const [searchString, setSearchStr] = useState("");
-  const [books, setBooks] = useState<Book[]>([]);
-
-  useEffect(() => {
-    // TODO; handling no search string is buggy
-    if (searchString) {
-      query(searchString)
-        .then((results: Book[]) => {
-          console.log(results);
-          setBooks(results);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      setBooks([]);
-    }
-  }, [searchString]);
+  const { searchString, setSearchStr, books, loading } = useBooks();
 
   return (
     <div>
