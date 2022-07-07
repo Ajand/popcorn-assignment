@@ -7,6 +7,7 @@ import { useBooks } from "../lib/hooks";
 
 import BookInput from "../components/BookInput";
 import BookItem from "../components/BookItem";
+import BookItemPlaceholder from "../components/BookItemPlaceholder";
 
 const Home: NextPage = () => {
   const { searchString, setSearchStr, books, loading } = useBooks();
@@ -31,11 +32,17 @@ const Home: NextPage = () => {
             borderRadius="lg"
           >
             <BookInput value={searchString} setValue={setSearchStr} />
-            <Box className={books.length ? styles.resultContainer : ""}>
+            <Box
+              className={books.length || loading ? styles.resultContainer : ""}
+            >
               <VStack spacing={0}>
-                {books.map((book) => (
-                  <BookItem book={book} key={book.id} />
-                ))}
+                {books.length
+                  ? books.map((book) => <BookItem book={book} key={book.id} />)
+                  : loading
+                  ? [1, 2, 3, 4, 5].map((item) => (
+                      <BookItemPlaceholder key={item} />
+                    ))
+                  : null}
               </VStack>
             </Box>
           </Box>
