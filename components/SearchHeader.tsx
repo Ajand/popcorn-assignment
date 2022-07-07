@@ -3,7 +3,7 @@ import { Box, Button } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { ReadingListContext } from "../lib/contexts/ReadingList";
 
-const ReadingListHeader: FC = () => {
+const SearchHeader: FC = () => {
   const router = useRouter();
   const { readingList } = useContext(ReadingListContext);
 
@@ -24,4 +24,4 @@ const ReadingListHeader: FC = () => {
   );
 };
 
-export default ReadingListHeader;
+export default SearchHeader;
