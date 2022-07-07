@@ -5,15 +5,9 @@ import { Book } from "../lib/types";
 
 import { ReadingListContext } from "../lib/contexts/ReadingList";
 
-const BookInput: FC<{ book: Book }> = ({ book }) => {
-  const {
-    readingList,
-    addToReadingList,
-    deleteFromReadingList,
-    isInReadingList,
-  } = useContext(ReadingListContext);
-
-  console.log(readingList);
+const BookItem: FC<{ book: Book }> = ({ book }) => {
+  const { addToReadingList, deleteFromReadingList, isInReadingList } =
+    useContext(ReadingListContext);
 
   return (
     <Box
@@ -55,4 +49,4 @@ const BookInput: FC<{ book: Book }> = ({ book }) => {
   );
 };
 
-export default BookInput;
+export default BookItem;
