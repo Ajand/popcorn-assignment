@@ -25,20 +25,23 @@ const BookInput: FC<{
           fontSize="24"
           fontWeight="light"
         />
-        <Box
-          ml={3}
-          mt={-1}
-          mr="4"
-          h={5}
-          w={5}
-          cursor="pointer"
-          _hover={{
-            color: "gray.50",
-          }}
-          color="gray.300"
-        >
-          <CloseIcon w="100%" h="100%" />
-        </Box>
+        {value && (
+          <Box
+            ml={3}
+            mt={-1}
+            mr="4"
+            h={5}
+            w={5}
+            cursor="pointer"
+            _hover={{
+              color: "gray.50",
+            }}
+            color="gray.300"
+            onClick={() => setValue("")}
+          >
+            <CloseIcon w="100%" h="100%" />
+          </Box>
+        )}
       </Flex>
     </Box>
   );
