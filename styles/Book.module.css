@@ -1,0 +1,11 @@
+.inputContainer {
+  background: rgba(75, 43, 81, 0.4);
+}
+
+.itemContainer {
+  transition: 0.2s;
+}
+
+.itemContainer:hover {
+  background: rgba(75, 43, 81, 0.4);
+}
