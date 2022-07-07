@@ -34,7 +34,7 @@ const Home: NextPage = () => {
                   books.length || loading ? styles.resultContainer : ""
                 }
               >
-                <VStack spacing={0}>
+                <VStack spacing={0} maxH="calc(95vh - 150px)" overflow="auto">
                   {books.length
                     ? books.map((book) => (
                         <BookItem book={book} key={book.id} />
